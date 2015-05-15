@@ -52,6 +52,10 @@ select-word-style bash
 
 # #### quick-switch to command mode (http://superuser.com/a/353127/146376)
 # bindkey '^j' vi-cmd-modeAlias file
+
+# # looking up command history - bind k and j for VI mode
+# bindkey -M vicmd 'k' history-substring-search-up
+# bindkey -M vicmd 'j' history-substring-search-down
 ############################################################################################################################
 
 ## pager
@@ -100,6 +104,7 @@ fi
 # FUNCTIONS
 ######
 source ~/.zsh/source/functions.zsh
+source ~/.zsh/source/auto-complete.zsh
 
 ######
 # Aliases
@@ -120,12 +125,20 @@ alias h="homeshick"
 # ZSH Plugins and Themes
 ######
 
-# --- Z yo
+# --- Z
 . "$HOME/.zsh/vendor/z/z.sh"
+
+# --- Smarter command history look up
+source "$HOME/.zsh/vendor/zsh-history-substring-search/zsh-history-substring-search.zsh"
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # --- ZSH Syntax Highlighting
 # @consider: Tweak colors
 [[ -s "$HOME/.zsh/vendor/zsh-syntax-highlighting/" ]] && source "$HOME/.zsh/vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
+source "$HOME/.zsh/vendor/zsh-history-substring-search/zsh-history-substring-search.zsh"
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=bold'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=bold'
 
 # --- Themeing
 # pretty colors -- REQUIRED for spectrum support
