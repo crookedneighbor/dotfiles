@@ -146,3 +146,12 @@ setopt prompt_subst
 # shorthand for colors
 source ~/.zsh/source/spectrum.zsh
 source ~/.zsh/themes/sorin-modified.zsh-theme
+
+# --- NODE
+if [[ $(uname -s) == "Darwin" ]]
+  then
+    export NVM_DIR=~/.nvm
+    [[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
+  else
+    [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
+fi
