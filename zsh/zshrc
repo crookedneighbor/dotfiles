@@ -1,0 +1,135 @@
+############################################################################################################################
+#
+#   oooooooooooo  .oooooo..o ooooo   ooooo         ooooooooooooo       .o.        .oooooo..o ooooooooooooo ooooo   .oooooo.
+#  d'""""""d888' d8P'    `Y8 `888'   `888'         8'   888   `8      .888.      d8P'    `Y8 8'   888   `8 `888'  d8P'  `Y8b
+#        .888P   Y88bo.       888     888               888          .8"888.     Y88bo.           888       888  888
+#       d888'     `"Y8888o.   888ooooo888               888         .8' `888.     `"Y8888o.       888       888  888
+#     .888P           `"Y88b  888     888  8888888      888        .88ooo8888.        `"Y88b      888       888  888
+#    d888'    .P oo     .d8P  888     888               888       .8'     `888.  oo     .d8P      888       888  `88b    ooo
+#  .8888888888P  8""88888P'  o888o   o888o             o888o     o88o     o8888o 8""88888P'      o888o     o888o  `Y8bood8P'
+#
+############################################################################################################################
+# Legend:
+# @todo: future feature
+# @consider: education/possibility
+# @borked: broken. Fix it!
+############################################################################################################################
+
+# --- PATH
+# Prefer local paths over system ones
+# @todo: pair this down to only what is actually needed
+export PATH='/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin'
+
+# --- EDITOR
+EDITOR='vim'
+export EDITOR
+
+# Prevents zsh from messing with tmux window title http://superuser.com/a/320316
+DISABLE_AUTO_TITLE="true"
+
+## Autocomplete
+# @todo: research more about what is happening here
+autoload -U compinit
+compinit
+
+autoload -U select-word-style
+select-word-style bash
+
+############################################################################################################################
+# @consider: might be hard to get used to ●︿●
+# ## VI Mode
+# set -o vi
+
+# # Edit command line (http://nuclearsquid.com/writings/edit-long-commands/)
+# autoload -U edit-command-line
+# bindkey '^xe' edit-command-line
+# bindkey '^x^e' edit-command-line
+# zle -N edit-command-line
+# bindkey -M vicmd v edit-command-line
+
+# ### provide reverse I search in vi mode
+# bindkey "^R" history-incremental-search-backward
+
+# #### quick-switch to command mode (http://superuser.com/a/353127/146376)
+# bindkey '^j' vi-cmd-modeAlias file
+############################################################################################################################
+
+## pager
+export PAGER="less"
+export LESS="-R"
+export LC_CTYPE=$LANG
+
+## History
+# Command history configuration
+if [ -z "$HISTFILE" ]; then
+    HISTFILE=$HOME/.zsh_history
+fi
+HISTSIZE=500
+SAVEHIST=1000
+
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history # share command history data
+
+# Ignore certain commands http://stackoverflow.com/questions/4747337/how-can-ignore-more-than-one-commands-from-history
+export HISTIGNORE="&:ls:exit"
+
+### Remove duplicates
+export HISTCONTROL=erasedups
+
+# --- OS
+setopt auto_cd
+setopt multios
+setopt cdablevarS
+
+if [[ $(uname -s) == "Darwin" ]]
+  then
+    autoload colors; colors;
+    export LSCOLORS="Gxfxcxdxbxegedabagacad"
+    alias ls='ls -G'
+    open=open
+  else
+    open=xdg-open # consider prepending 'detach' to free up process on open [source](http://unix.stackexchange.com/a/74622/38479)
+fi
+
+######
+# FUNCTIONS
+######
+source ~/.zsh/source/functions.zsh
+
+######
+# Aliases
+######
+source ~/.zsh/source/aliases
+[[ -s "$HOME/.local_aliases" ]] && source "$HOME/.local_aliases";
+
+######
+# Heroku Toolbelt
+######
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# --- Homeschick
+source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+alias h="homeshick"
+
+######
+# ZSH Plugins and Themes
+######
+
+# --- Z yo
+. "$HOME/.zsh/vendor/z/z.sh"
+
+# --- ZSH Syntax Highlighting
+# @consider: Tweak colors
+[[ -s "$HOME/.zsh/vendor/zsh-syntax-highlighting/" ]] && source "$HOME/.zsh/vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
+
+# --- Themeing
+# pretty colors -- REQUIRED for spectrum support
+setopt prompt_subst
+# shorthand for colors
+source ~/.zsh/source/spectrum.zsh
+source ~/.zsh/themes/sorin-modified.zsh-theme

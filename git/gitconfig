@@ -1,0 +1,38 @@
+[user]
+  name = Blade Barringer
+  email = blade@crookedneighbor.com
+[color]
+  ui = auto
+[alias]
+  ci = commit
+  cv = commit --verbose
+  co = checkout
+  st = status
+  ch = cherry -v origin
+  br = branch
+  aa = add --all --verbose .
+  addall = add -A .
+  hist = log --graph --abbrev-commit --pretty=format:'%C(red)%h%C(reset) - %s %C(green)(%cr) %C(blue)<%an>%C(magenta)%d%C(reset)'
+  oneline = log --pretty=format:\"%h %ad%x20%s%x20%x28%an%x29\" --date=short
+  current = log --pretty=format:'%ad %h %d' --abbrev-commit --date=short -1
+  cur = log --pretty=format:'%ad %h %d' --abbrev-commit --date=short -1
+
+  # show difference between the HEAD and the index
+  staged = diff --cached
+  ds = diff --staged
+
+  # show difference between working tree and the index
+  unstaged = diff
+
+  pile = stash --include-untracked
+[push]
+  default = current
+[core]
+	autocrlf = input
+	excludesfile = /Users/blade/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

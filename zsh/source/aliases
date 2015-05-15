@@ -1,0 +1,62 @@
+############################################################################################################################
+#
+#           .8.          8 8888          8 8888          .8.            d888888o.   8 8888888888     d888888o.
+#          .888.         8 8888          8 8888         .888.         .`8888:' `88. 8 8888         .`8888:' `88.
+#         :88888.        8 8888          8 8888        :88888.        8.`8888.   Y8 8 8888         8.`8888.   Y8
+#        . `88888.       8 8888          8 8888       . `88888.       `8.`8888.     8 8888         `8.`8888.
+#       .8. `88888.      8 8888          8 8888      .8. `88888.       `8.`8888.    8 888888888888  `8.`8888.
+#      .8`8. `88888.     8 8888          8 8888     .8`8. `88888.       `8.`8888.   8 8888           `8.`8888.
+#     .8' `8. `88888.    8 8888          8 8888    .8' `8. `88888.       `8.`8888.  8 8888            `8.`8888.
+#    .8'   `8. `88888.   8 8888          8 8888   .8'   `8. `88888.  8b   `8.`8888. 8 8888        8b   `8.`8888.
+#   .888888888. `88888.  8 8888          8 8888  .888888888. `88888. `8b.  ;8.`8888 8 8888        `8b.  ;8.`8888
+#  .8'       `8. `88888. 8 888888888888  8 8888 .8'       `8. `88888. `Y8888P ,88P' 8 888888888888 `Y8888P ,88P'
+#
+############################################################################################################################
+
+# mkdir
+## have mkdir create parent directories
+alias mkdir='mkdir -pv'
+
+# cd
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+alias cd/='cd /'
+
+# ls niceities
+alias l='ls -lah'
+alias ll='ls -lah'
+alias la='ls -lAh'
+
+# history
+alias history='fc -l 1'
+
+# grep
+alias grep='grep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn}'
+
+# --- "Portable" bash aliases
+alias zshrc='$EDITOR ~/.zshrc'
+alias t='tmux'
+alias tat='tmux attach -t'
+alias g='git'
+
+# --- Convenience
+## Print the current date (for backups, etc)
+nicedate=$(date +%m-%d-%y)
+## Avoid a screen full of vendor junk when using tree
+alias tree="tree -I 'node_modules|vendor'"
+## Line numbers with cat
+alias catn='cat -n'
+## Open changed files in vim
+alias editchanged='vim `git status --porcelain | sed -ne '\''s/^ M //p'\''`'
+
+# --- Bundler
+alias bi="bundle install"
+alias be="bundle exec"
+
+alias fkndie="killall --user $USER -TERM ruby rake thin node nginx apache2 haproxy;redis-cli flushall"
+
+# --- Open GUI Apps
+alias textedit="open -a TextEdit"
+alias openx="open . -a xcode"
