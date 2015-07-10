@@ -26,3 +26,6 @@ inoremap <C-L> <SPACE>=><SPACE>
 " Edit or Source .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Escape insert mode by typing jk
+inoremap jk <esc>
