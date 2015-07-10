@@ -30,3 +30,6 @@
 [core]
 	autocrlf = input
 	excludesfile = /Users/blade/.gitignore_global
+
+[include]
+  path = ~/.gitconfig_local
