@@ -28,6 +28,7 @@
 [push]
   default = current
 [core]
+  pager = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
   autocrlf = input
   excludesfile = /Users/blade/.gitignore_global
 
