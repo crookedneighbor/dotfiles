@@ -13,7 +13,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'moll/vim-node'
-Plug 'muffs/wap-it'
+Plug 'crookedneighbor/wap-it', { 'branch': 'leader-mapping' }
 Plug 'pgr0ss/vimux-ruby-test'
 Plug 'rizzatti/dash.vim'
 Plug 'rking/ag.vim'
