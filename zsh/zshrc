@@ -157,3 +157,6 @@ if [[ $(uname -s) == "Darwin" ]]
   else
     [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
 fi
+
+# --- RUBY
+eval "$(rbenv init -)"
