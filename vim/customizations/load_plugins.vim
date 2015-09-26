@@ -4,16 +4,16 @@ call plug#begin('~/.vim/plugged')
 Plug 'benmills/vim-commadown'
 Plug 'benmills/vimux'
 Plug 'CamelCaseMotion'
+Plug 'crookedneighbor/bufexplorer'
+Plug 'crookedneighbor/wap-it', { 'branch': 'leader-mapping' }
 Plug 'digitaltoad/vim-jade'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 Plug 'henrik/vim-indexed-search'
-Plug 'crookedneighbor/bufexplorer'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'moll/vim-node'
-Plug 'crookedneighbor/wap-it', { 'branch': 'leader-mapping' }
 Plug 'pgr0ss/vimux-ruby-test'
 Plug 'rizzatti/dash.vim'
 Plug 'rking/ag.vim'

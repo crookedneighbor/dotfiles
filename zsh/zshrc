@@ -142,6 +142,8 @@ source "$HOME/.zsh/vendor/zsh-history-substring-search/zsh-history-substring-sea
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=bold'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=bold'
 
+ulimit -n 2560
+
 # --- Themeing
 # pretty colors -- REQUIRED for spectrum support
 setopt prompt_subst
