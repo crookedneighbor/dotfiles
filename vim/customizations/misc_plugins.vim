@@ -13,3 +13,6 @@ let g:no_html_toolbar = 'yes'
 let coffee_no_trailing_space_error = 1
 
 let g:netrw_banner = 0
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_javascript_checkers = ['eslint']
