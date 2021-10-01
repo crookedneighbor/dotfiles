@@ -4,8 +4,7 @@
 [color]
   ui = auto
 [alias]
-  ci = commit
-  cv = commit --verbose
+  ci = commit --verbose
   co = checkout
   st = status
   ch = cherry -v origin
@@ -30,7 +29,7 @@
 [core]
   pager = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
   autocrlf = input
-  excludesfile = /Users/blade/.gitignore_global
+  excludesfile = ~/.gitignore_global
 
 [include]
   path = ~/.gitconfig_local
