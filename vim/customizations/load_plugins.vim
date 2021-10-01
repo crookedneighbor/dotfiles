@@ -3,22 +3,25 @@ call plug#begin('~/.vim/plugged')
 " ========= Plugins ========
 Plug 'benmills/vim-commadown'
 Plug 'benmills/vimux'
-Plug 'CamelCaseMotion'
 Plug 'crookedneighbor/bufexplorer'
 Plug 'crookedneighbor/wap-it', { 'branch': 'leader-mapping' }
 Plug 'digitaltoad/vim-jade'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 Plug 'henrik/vim-indexed-search'
+Plug 'joshdick/onedark.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
 Plug 'moll/vim-node'
-Plug 'pgr0ss/vimux-ruby-test'
+Plug 'posva/vim-vue'
+Plug 'prettier/vim-prettier'
 Plug 'rizzatti/dash.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
+Plug 'soywod/kronos.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -26,9 +29,17 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/CamelCaseMotion'
+Plug 'w0rp/ale'
 
 " Add plugins to &runtimepath
 call plug#end()
 
 filetype plugin indent on
+
+" Colors
+colorscheme onedark
+
+if (has("termguicolors"))
+  set termguicolors
+endif

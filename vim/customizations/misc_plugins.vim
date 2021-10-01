@@ -14,5 +14,7 @@ let coffee_no_trailing_space_error = 1
 
 let g:netrw_banner = 0
 
-let g:syntastic_check_on_open = 1
-let g:syntastic_javascript_checkers = ['eslint']
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_eslint_exec = 'eslint_d'

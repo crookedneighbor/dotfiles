@@ -24,12 +24,9 @@ if version >= 703
 endif
 set undolevels=1000 "maximum number of changes that can be undone
 
-" Color
-colorscheme Tomorrow-Night
-
-au FileType diff colorscheme desert
-au FileType git colorscheme desert
-au BufWinLeave * colorscheme Tomorrow-Night
+" au FileType diff colorscheme desert
+" au FileType git colorscheme desert
+" au BufWinLeave * colorscheme Tomorrow-Night
 
 augroup markdown
   au!
@@ -59,13 +56,12 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Autoremove trailing spaces when saving the buffer
-autocmd FileType c,cpp,elixir,eruby,html,jade,java,javascript,php,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,elixir,eruby,html,jade,java,javascript,typescript,php,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Highlight too-long lines
 autocmd BufRead,InsertEnter,InsertLeave * 2match LineLengthError /\%126v.*/
 highlight LineLengthError ctermbg=black guibg=black
-autocmd ColorScheme * highlight LineLengthError ctermbg=black guibg=black
-
+autocmd ColorScheme * highlight LineLengthError ctermbg=black guibg=black 
 " Set up highlight group & retain through colorscheme changes
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red

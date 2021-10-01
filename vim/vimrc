@@ -24,7 +24,7 @@ filetype off
 
 " Path to my customizations
 " ==========================
-set runtimepath+=~/.homesick/repos/dotfiles/vim/customizations/
+set runtimepath+=~/.vim/customizations/
 
 " ========= Plugins ========
 runtime load_plugins.vim
@@ -33,11 +33,11 @@ runtime load_plugins.vim
 runtime options.vim
 
 " ========= Plugin Options ========
-runtime ack.vim
 runtime ctrlp.vim
 runtime nerdtree.vim
 runtime tcomment.vim
 runtime vimux.vim
+runtime ale.vim
 
 runtime misc_plugins.vim
 
