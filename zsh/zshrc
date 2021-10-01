@@ -124,21 +124,22 @@ source ~/.zsh/source/aliases
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ######
+# Make Brew work
+######
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+######
 # ZSH Plugins and Themes
 ######
 
-# --- Z
-. "$HOME/.zsh/vendor/z/z.sh"
-
 # --- Smarter command history look up
-source "$HOME/.zsh/vendor/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # --- ZSH Syntax Highlighting
 # @consider: Tweak colors
-[[ -s "$HOME/.zsh/vendor/zsh-syntax-highlighting/" ]] && source "$HOME/.zsh/vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
-source "$HOME/.zsh/vendor/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=bold'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=bold'
 
@@ -151,6 +152,9 @@ setopt prompt_subst
 source ~/.zsh/source/spectrum.zsh
 source ~/.zsh/themes/sorin-modified.zsh-theme
 
+# --- Add Git from homebrew
+export PATH="/usr/local/bin:${PATH}"
+
 # --- NODE
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -159,3 +163,6 @@ export NVM_DIR="$HOME/.nvm"
 # --- RUBY
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# --- Python
+export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
