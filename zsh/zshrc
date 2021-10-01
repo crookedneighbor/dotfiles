@@ -124,22 +124,17 @@ source ~/.zsh/source/aliases
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ######
-# Make Brew work
-######
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-######
 # ZSH Plugins and Themes
 ######
 
 # --- Smarter command history look up
-source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source "$(brew --prefix)/opt/zsh-history-substring-search"
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # --- ZSH Syntax Highlighting
 # @consider: Tweak colors
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "$(brew --prefix)/opt/zsh-syntax-highlighting"
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=bold'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=bold'
 
