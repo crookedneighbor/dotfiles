@@ -136,13 +136,13 @@ fi
 ######
 
 # --- Smarter command history look up
-source "$(brew --prefix)/opt/zsh-history-substring-search"
+source "$(brew --prefix zsh-history-substring-search)/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # --- ZSH Syntax Highlighting
 # @consider: Tweak colors
-source "$(brew --prefix)/opt/zsh-syntax-highlighting"
+source "$(brew --prefix zsh-syntax-highlighting)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=bold'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=bold'
 
