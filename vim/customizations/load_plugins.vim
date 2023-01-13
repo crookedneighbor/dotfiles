@@ -10,7 +10,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'benmills/vim-commadown'
 Plug 'benmills/vimux'
 Plug 'crookedneighbor/bufexplorer'
-Plug 'crookedneighbor/wap-it', { 'branch': 'leader-mapping' }
 Plug 'digitaltoad/vim-jade'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
