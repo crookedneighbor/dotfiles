@@ -18,13 +18,9 @@ link:
 brew: brew-cli brew-apps
 
 brew-cli:
-	brew install git
-	brew install tmux
-	brew install tig
-	brew install rbenv
-	brew install nvm
-	brew install zsh-history-substring-search
-	brew install zsh-syntax-highlighting
+	for app in git tmux tig rbenv nvm zsh-history-substring-search zsh-syntax-highlighting; do \
+    brew install $$app ; \
+	done
 
 brew-apps:
 ifeq (,$(wildcard /Applications/Discord.app))
