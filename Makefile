@@ -23,33 +23,6 @@ brew-cli:
 	done
 
 brew-apps:
-ifeq (,$(wildcard /Applications/Discord.app))
-	brew install --cask discord
-else
-	echo "Discord already installed. Skipping brew install --cask discord"
-endif
-ifeq (,$(wildcard /Applications/ShiftIt.app))
-	brew install --cask shiftit
-else
-	echo "Shiftit already installed. Skipping brew install --cask shiftit"
-endif
-ifeq (,$(wildcard /Applications/iTerm.app))
-	brew install --cask iterm2
-else
-	echo "iTerm2 already installed. Skipping brew install --cask iterm2"
-endif
-ifeq (,$(wildcard /Applications/Spotify.app))
-	brew install --cask spotify
-else
-	echo "Spotify already installed. Skipping brew install --cask spotify"
-endif
-ifeq (,$(wildcard /Applications/Docker.app))
-	brew install --cask docker
-else
-	echo "Docker already installed. Skipping brew install --cask docker"
-endif
-ifeq (,$(wildcard /Applications/Skitch.app))
-	brew install --cask skitch
-else
-	echo "Skitch already installed. Skipping brew install --cask skitch"
-endif
+	for app in discord shiftit iterm2 spotify docker skitch; do \
+    brew install --cask $$app ; \
+	done
