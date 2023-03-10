@@ -23,6 +23,6 @@ brew-cli:
 	done
 
 brew-apps:
-	for app in discord shiftit iterm2 spotify docker skitch; do \
+	for app in google-chrome discord shiftit iterm2 spotify steam docker skitch; do \
     brew install --cask $$app ; \
 	done
