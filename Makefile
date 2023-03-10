@@ -17,12 +17,30 @@ link:
 
 brew: brew-cli brew-apps
 
+CLI_APPS = git \
+					 tmux \
+					 tig \
+					 rbenv \
+					 nvm \
+					 zsh-history-substring-search \
+					 zsh-syntax-highlighting
+
+DESKTOP_APPS = google-chrome \
+							 visual-studio-code \
+							 discord \
+							 shiftit \
+							 iterm2 \
+							 spotify \
+							 steam \
+							 docker \
+							 skitch
+
 brew-cli:
-	for app in git tmux tig rbenv nvm zsh-history-substring-search zsh-syntax-highlighting; do \
+	for app in $(CLI_APPS); do \
     brew install $$app ; \
 	done
 
 brew-apps:
-	for app in google-chrome visual-studio-code discord shiftit iterm2 spotify steam docker skitch; do \
+	for app in $(DESKTOP_APPS); do \
     brew install --cask $$app ; \
 	done
