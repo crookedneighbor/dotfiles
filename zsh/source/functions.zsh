@@ -24,8 +24,8 @@ google() {
     $open "http://www.google.com/search?q=$search"
 }
 
-# Start a python simple HTTP server. This is superseded, for the most part, by node's static (``npm install -g static``)
-## http://docs.python.org/2/library/simplehttpserver.html#module-SimpleHTTPServer
+# Start an http server in same directory
+# @arg1=3000 - the port to use when starting the server
 serve() {
   if [[ -z "$1" ]]; then
       echo "No port supplied. Using 3000"
@@ -34,7 +34,7 @@ serve() {
     PORT="$1"
   fi
   echo "\033[38;5;148m Starting on $PORT, Have Fun!\033[39m"
-  python -m SimpleHTTPServer $PORT
+  npx http-server -p$PORT
 }
 
 # cd into whatever is the forefront Finder window.
