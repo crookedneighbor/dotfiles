@@ -9,6 +9,7 @@ function groot() {
 base64() {
   openssl base64 < $1 | tr -d '\n' | pbcopy
 }
+
 # copy
 ## Copies User's sshkey to clipboard
 ## @todo: have a general "copy" alias to use in linux + darwin?
@@ -27,7 +28,6 @@ mcd() { [ -n "$1"  ] && mkdir -p "$1" && cd "$1";  }
 ## http://superuser.com/questions/47192/google-search-from-linux-terminal
 google() {
     search=""
-    echo "$1"
     for term in $*; do
         search="$search%20$term"
     done
@@ -83,4 +83,3 @@ serve() {
 cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }
-
