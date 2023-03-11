@@ -60,7 +60,3 @@ alias fkndie="killall --user $USER -TERM ruby rake thin node nginx apache2 hapro
 # --- Open GUI Apps
 alias textedit="open -a TextEdit"
 alias openx="open . -a xcode"
-
-# --- Simple Servers
-alias phpserver="php -S 127.0.0.1:8000"
-alias pyserver="python -m SimpleHTTPServer 8000"
