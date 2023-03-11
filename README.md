@@ -32,3 +32,13 @@ my dotfiles (heavilly influenced by [Braintree](https://www.braintreepayments.co
     * [Steam](https://store.steampowered.com)
     * [iTerm 2](https://iterm2.com/)
 * Open iTerm and run `vim` to complete the vim setup. You'll see an error about the color scheme `onedark` being missing, but don't worry, it's in the process of being installed.
+
+## Additional Tasks when running on a work computer
+
+* create a `~/.gitconfig_local` file with the name/email for your workplace so that default commits from your work computer use your work email instead of your personal email:
+
+```
+[user]
+  name = Blade Barringer
+  email = blade@your-workplace.com
+```
