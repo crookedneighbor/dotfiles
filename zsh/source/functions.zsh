@@ -45,3 +45,44 @@ serve() {
 cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }
+
+# open a Github PR from the base branch
+## @arg target_branch=main|master the branch to open a pr against
+## @source: @sshropshire
+ghpr () {
+    local target_branch
+
+    if [ -n "$1" ]; then
+        # ^ target branch input by user non-empty
+        target_branch="$1"
+    elif git rev-parse --verify main 2>/dev/null ; then
+        # ^ check if 'main' exists; ignore stderr
+        target_branch=main
+    else
+        # for repos that still need to migrate to main
+        target_branch=master
+    fi
+
+    local remote_url=$(git config --get remote.origin.url)
+    local current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+    local http_remote_url
+    if [[ $remote_url == git@* ]]; then
+      # convert ssh url to https url
+      http_remote_url=$(echo $remote_url | sed -En 's/git@(.*):(.*)/https:\/\/\1\/\2/p')
+    else
+      http_remote_url=$remote_url
+    fi
+
+    # Ref: https://bytefreaks.net/gnulinux/bash/how-to-remove-prefix-and-suffix-from-a-variable-in-bash
+    local pr_url="${http_remote_url%.git}/compare/${target_branch}...${current_branch}"
+
+    # push up any local committed changes before attempting to open a PR
+    git push -u
+
+    if command -v open ; then
+      open $pr_url
+    else
+      echo "open comamnd not found; go to $pr_url"
+    fi
+}
