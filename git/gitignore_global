@@ -1,4 +1,17 @@
+# Mac OS file directory nonsense
 .DS_Store
+
+# Vim swap files
 *.swp
 *.swo
 *~
+
+# VS Code files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
+*.vsix
