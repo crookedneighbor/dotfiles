@@ -30,6 +30,7 @@ DESKTOP_APPS = google-chrome \
 	discord \
 	shiftit \
 	iterm2 \
+	notion \
 	spotify \
 	steam \
 	docker \
