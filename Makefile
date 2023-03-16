@@ -32,6 +32,7 @@ DESKTOP_APPS = google-chrome \
 	iterm2 \
 	notion \
 	spotify \
+	todoist \
 	steam \
 	docker \
 	skitch
