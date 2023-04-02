@@ -50,7 +50,7 @@ brew-apps:
 	done
 
 brew-personal-apps:
-	@read -p "Do you want to install your personal desktop apps? [y/N] " ans && ans=$${ans:-N} ; \
+	@read -p "Do you want to install optional applications (Discord/Steam/Reaper)? [y/N] " ans && ans=$${ans:-N} ; \
 	if [ $${ans} = y ] || [ $${ans} = Y ]; then \
 		for app in $(PERSONAL_DESKTOP_APPS); do \
 			brew install --cask $$app ; \

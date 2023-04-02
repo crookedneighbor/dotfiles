@@ -31,7 +31,7 @@ my dotfiles (heavilly influenced by [Braintree](https://www.braintreepayments.co
     * [Spotify](https://spotify.com/)
     * [Todoist](https://todoist.com/)
     * [iTerm 2](https://iterm2.com/)
-  * In addition, a confirm prompt will appear to ask about some additional apps to install for personal computers:
+  * In addition, a confirm prompt will appear to ask about some optional apps to install:
     * [Discord](https://discord.com/)
     * [Reaper](https://www.reaper.fm/)
     * [Steam](https://store.steampowered.com)
