@@ -24,16 +24,22 @@ my dotfiles (heavilly influenced by [Braintree](https://www.braintreepayments.co
     * Various Zsh plugins
   * App Installs:
     * [Google Chrome](https://www.google.com/chrome/)
-    * [Discord](https://discord.com/)
     * [Docker](https://docker.com/)
     * [Notion](https://www.notion.so/)
     * [ShiftIt](https://github.com/fikovnik/ShiftIt/releases)
     * [Skitch](https://skitch.com/)
     * [Spotify](https://spotify.com/)
-    * [Steam](https://store.steampowered.com)
     * [Todoist](https://todoist.com/)
     * [iTerm 2](https://iterm2.com/)
+  * In addition, a confirm prompt will appear to ask about some additional apps to install for personal computers:
+    * [Discord](https://discord.com/)
+    * [Reaper](https://www.reaper.fm/)
+    * [Steam](https://store.steampowered.com)
 * Open iTerm and run `vim` to complete the vim setup. You'll see an error about the color scheme `onedark` being missing, but don't worry, it's in the process of being installed.
+
+## Additional Tasks when running on a personal computer
+
+If you plan to use your [Arturia](https://www.arturia.com/) Midi Controller, you'll have to log in and activate the software license for your computer (and remove any previous computers you no longer have access to).
 
 ## Additional Tasks when running on a work computer
 

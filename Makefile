@@ -15,7 +15,7 @@ link:
 	rm -f ~/.zprofile && ln -s $(ROOT_DIR)/zsh/zprofile ~/.zprofile
 	rm -rf ~/.zsh && mkdir -p ~/.zsh && ln -s $(ROOT_DIR)/zsh/source ~/.zsh/source && ln -s $(ROOT_DIR)/zsh/themes ~/.zsh/themes
 
-brew: brew-cli brew-apps
+brew: brew-cli brew-apps brew-personal-apps
 
 CLI_APPS = git \
 	tmux \
@@ -27,15 +27,17 @@ CLI_APPS = git \
 
 DESKTOP_APPS = google-chrome \
 	visual-studio-code \
-	discord \
 	shiftit \
 	iterm2 \
 	notion \
 	spotify \
 	todoist \
-	steam \
 	docker \
 	skitch
+
+PERSONAL_DESKTOP_APPS = discord \
+	reaper \
+	steam
 
 brew-cli:
 	for app in $(CLI_APPS); do \
@@ -46,3 +48,13 @@ brew-apps:
 	for app in $(DESKTOP_APPS); do \
 		brew install --cask $$app ; \
 	done
+
+brew-personal-apps:
+	@read -p "Do you want to install your personal desktop apps? [y/N] " ans && ans=$${ans:-N} ; \
+	if [ $${ans} = y ] || [ $${ans} = Y ]; then \
+		for app in $(PERSONAL_DESKTOP_APPS); do \
+			brew install --cask $$app ; \
+		done \
+	else \
+		printf "Skipping personal app installation." ; \
+	fi
