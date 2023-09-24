@@ -27,6 +27,7 @@ CLI_APPS = git \
 
 DESKTOP_APPS = google-chrome \
 	visual-studio-code \
+	caffeine \
 	shiftit \
 	iterm2 \
 	notion \
