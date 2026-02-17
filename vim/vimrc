@@ -52,3 +52,5 @@ runtime plugins.vim
 if filereadable(expand('~/.vimrc_local'))
   source ~/.vimrc_local
 end
+
+:iabbrev ccc Co-Authored-By: Claude <noreply@anthropic.com>
