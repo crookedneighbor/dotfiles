@@ -1,24 +1,34 @@
 #!/bin/bash
 
 # Configuration
-INPUT_DIR="."        # Change this to your audiobook folder if needed
+INPUT_DIR="${1:-.}"
 FILE_EXT="mp3"       # Change to m4a, m4b, etc. if needed
 OUTPUT_FILE="audiobook.m4b"
 FILELIST="filelist.txt"
 TEMP_FILE="temp_combined.m4b"
 
+export INPUT_DIR FILE_EXT FILELIST
+
 # Step 1: Generate sorted file list
 echo "Collecting files..."
-python3 -c "
+python3 << 'PYEOF'
 import glob, os
-files = sorted(glob.glob('${INPUT_DIR}/**/*.${FILE_EXT}', recursive=True))
+
+input_dir = os.environ['INPUT_DIR']
+file_ext = os.environ['FILE_EXT']
+filelist = os.environ['FILELIST']
+
+files = sorted(glob.glob(os.path.join(input_dir, '**', '*.' + file_ext), recursive=True))
 if not files:
-    files = sorted(glob.glob('${INPUT_DIR}/*.${FILE_EXT}'))
-with open('${FILELIST}', 'w') as f:
+    files = sorted(glob.glob(os.path.join(input_dir, '*.' + file_ext)))
+
+with open(filelist, 'w') as f:
     for fn in files:
-        f.write(f\"file '{os.path.abspath(fn)}'\n\")
-print(f'Found {len(files)} files')
-"
+        path = os.path.abspath(fn)
+        escaped = path.replace("'", "'\\''")
+        f.write("file '" + escaped + "'\n")
+print('Found {} files'.format(len(files)))
+PYEOF
 
 # Check we found some files
 if [ ! -s "$FILELIST" ]; then
@@ -27,13 +37,18 @@ if [ ! -s "$FILELIST" ]; then
 fi
 
 # Step 2: Get the first file for metadata
-FIRST_FILE=$(python3 -c "
-import glob
-files = sorted(glob.glob('${INPUT_DIR}/**/*.${FILE_EXT}', recursive=True))
+FIRST_FILE=$(python3 << 'PYEOF'
+import glob, os
+
+input_dir = os.environ['INPUT_DIR']
+file_ext = os.environ['FILE_EXT']
+
+files = sorted(glob.glob(os.path.join(input_dir, '**', '*.' + file_ext), recursive=True))
 if not files:
-    files = sorted(glob.glob('${INPUT_DIR}/*.${FILE_EXT}'))
+    files = sorted(glob.glob(os.path.join(input_dir, '*.' + file_ext)))
 print(files[0])
-")
+PYEOF
+)
 echo "Pulling metadata from: $FIRST_FILE"
 
 # Step 3: Combine all files

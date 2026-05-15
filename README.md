@@ -50,3 +50,43 @@ If you plan to use your [Arturia](https://www.arturia.com/) Midi Controller, you
   name = Blade Barringer
   email = blade@your-workplace.com
 ```
+
+## Scripts
+
+### `scripts/make_audiobook.sh`
+
+Combines a folder of audio files (MP3, M4A, etc.) into a single `.m4b` audiobook, pulling metadata from the first track.
+
+**Dependencies:** `ffmpeg`, `python3`
+
+**Usage:**
+
+```bash
+./scripts/make_audiobook.sh [INPUT_DIR]
+```
+
+| Argument    | Default | Description                              |
+|-------------|---------|------------------------------------------|
+| `INPUT_DIR` | `.`     | Directory containing the audio files     |
+
+The script also has two variables you can edit at the top of the file:
+
+| Variable      | Default              | Description                              |
+|---------------|----------------------|------------------------------------------|
+| `FILE_EXT`    | `mp3`                | Audio file extension to search for       |
+| `OUTPUT_FILE` | `audiobook.m4b`      | Name of the output file                  |
+
+**Examples:**
+
+```bash
+# Combine MP3s in the current directory
+./scripts/make_audiobook.sh
+
+# Combine MP3s from a specific folder
+./scripts/make_audiobook.sh ~/Downloads/my-audiobook
+
+# Use a different file extension (edit FILE_EXT in the script, or override inline)
+FILE_EXT=m4a ./scripts/make_audiobook.sh ~/Downloads/my-audiobook
+```
+
+Output is written to `audiobook.m4b` in the current working directory.
