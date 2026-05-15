@@ -2,10 +2,26 @@
 
 # Configuration
 INPUT_DIR="${1:-.}"
+FORMAT="${2:-m4b}"   # Output format: m4b (default) or mp3
 FILE_EXT="mp3"       # Change to m4a, m4b, etc. if needed
-OUTPUT_FILE="audiobook.m4b"
+OUTPUT_FILE="audiobook.${FORMAT}"
 FILELIST="filelist.txt"
-TEMP_FILE="temp_combined.m4b"
+TEMP_FILE="temp_combined.${FORMAT}"
+
+case "$FORMAT" in
+    mp3)
+        AUDIO_CODEC="libmp3lame"
+        AUDIO_BITRATE="128k"
+        ;;
+    m4b|m4a)
+        AUDIO_CODEC="aac"
+        AUDIO_BITRATE="64k"
+        ;;
+    *)
+        echo "Error: Unsupported format '${FORMAT}'. Use mp3 or m4b."
+        exit 1
+        ;;
+esac
 
 export INPUT_DIR FILE_EXT FILELIST
 
@@ -53,7 +69,7 @@ echo "Pulling metadata from: $FIRST_FILE"
 
 # Step 3: Combine all files
 echo "Combining files..."
-ffmpeg -f concat -safe 0 -i "$FILELIST" -c:a aac -b:a 64k "$TEMP_FILE"
+ffmpeg -f concat -safe 0 -i "$FILELIST" -c:a "$AUDIO_CODEC" -b:a "$AUDIO_BITRATE" "$TEMP_FILE"
 
 if [ $? -ne 0 ]; then
     echo "Error: ffmpeg failed during concatenation"

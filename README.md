@@ -62,12 +62,13 @@ Combines a folder of audio files (MP3, M4A, etc.) into a single `.m4b` audiobook
 **Usage:**
 
 ```bash
-./scripts/make_audiobook.sh [INPUT_DIR]
+./scripts/make_audiobook.sh [INPUT_DIR] [FORMAT]
 ```
 
 | Argument    | Default | Description                              |
 |-------------|---------|------------------------------------------|
 | `INPUT_DIR` | `.`     | Directory containing the audio files     |
+| `FORMAT`    | `m4b`   | Output format: `m4b` or `mp3`           |
 
 The script also has two variables you can edit at the top of the file:
 
@@ -79,13 +80,16 @@ The script also has two variables you can edit at the top of the file:
 **Examples:**
 
 ```bash
-# Combine MP3s in the current directory
+# Combine MP3s in the current directory into an M4B (default)
 ./scripts/make_audiobook.sh
 
 # Combine MP3s from a specific folder
 ./scripts/make_audiobook.sh ~/Downloads/my-audiobook
 
-# Use a different file extension (edit FILE_EXT in the script, or override inline)
+# Export as MP3 instead of M4B
+./scripts/make_audiobook.sh ~/Downloads/my-audiobook mp3
+
+# Use a different input file extension (edit FILE_EXT in the script, or override inline)
 FILE_EXT=m4a ./scripts/make_audiobook.sh ~/Downloads/my-audiobook
 ```
 
