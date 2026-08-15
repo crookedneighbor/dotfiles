@@ -165,8 +165,16 @@ source $(brew --prefix nvm)/nvm.sh
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # --- RUBY
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
+# export RUBY_CONFIGURE_OPTS="--with-zlib-dir=$(brew --prefix zlib) --with-openssl-dir=$(brew --prefix openssl@1.1) --with-readline-dir=$(brew --prefix readline) --with-libyaml-dir=$(brew --prefix libyaml) --with-gdbm-dir=$(brew --prefix gdbm)"
+# export CFLAGS="-Wno-error=implicit-function-declaration"
+# export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init - zsh)"
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 
 # --- Python
 export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
+
+# --- PSQL
+# install https://postgresapp.com/downloads.html
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
